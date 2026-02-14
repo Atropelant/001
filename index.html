@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .gerar {
+        background-color: rgb(0, 182, 0);
+        width: 5vw;
+        height: 3vh;
+        margin-right: 1vw ;
+        border: 1px solid white;
+        color: white;
+      }
+
+      .remove {
+        background-color: rgb(214, 1, 1);
+        width: 5vw;
+        height: 3vh;
+        margin-left: 1vw;
+        border: 1px solid white;
+        color: white;
+      }
+
+      & .remove:hover{
+        background-color: rgba(214, 1, 1, 0.9);
+        color: white;
+      }
+
+      & .gerar:hover{
+        background-color: rgb(0, 158, 0);
+      }
+
+      body {
+        background-image: linear-gradient(
+          rgba(0, 0, 0, 0.847),
+          rgb(0, 0, 255),
+          rgba(0, 0, 255, 0.688) );
+          width: auto;
+          height: auto;
+       
+        display: flex;
+        justify-content: center;
+
+        & main {
+          background-color: white;
+          width: 40vw;
+          height: auto;
+          box-shadow: 10px 10px 10px black;
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          padding-top: 1px;
+          padding-bottom: 5vh;
+          border-radius: 10px;
+
+          & .botoes {
+            width: auto;
+            height: auto;
+            margin-top: 1vh;
+            display: flex;
+            flex-direction: column;
+            margin-left: 5vw;
+            margin-right: 5vw;
+            background-color: rgb(1, 189, 189);
+            box-shadow: 10px 10px 10px black;
+            margin-bottom: 1vh;
+            border-radius: 10px;
+
+            & .buttons{
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+            }
+
+            & #caixas{
+                width: auto;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+              }
+
+            & h6{
+              width: auto;
+              height: 10px;
+              font-size:medium;
+              display: flex;
+              justify-content: center;
+            }
+          }
+
+          & .resposta{
+            width: auto;
+            height: 8vh;
+            background-color: rgb(163, 163, 163);
+            border: 1px solid black;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          
+
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div id="dez-botoes" class="botoes">
+        <h6>Clique para gerar 10 botôes:</h6>
+        <div class="buttons">
+          <button class="gerar" class="todos" onclick="criarBotao()">Gerar</button>
+          <button id="removeBotao" class="remove" class="todos"   onclick="removeBotao()">
+            Apagar
+          </button>
+          <!----remover-->
+        </div> <br>
+        <div id="botao" class="resposta"></div>
+      </div>
+      <div id="gerar-lista" class="botoes">
+        <h6>Clique para gerar uma lista</h6>
+        <div class="buttons">
+          <button class="gerar" class="todos"   onclick="criarLista()">Gerar</button>
+          <button id="removeLista" class="remove" class="todos"  onclick="removeLista()">
+            Apagar
+          </button>
+          <!----remover-->
+        </div> <br>
+        <div id="lista" class="resposta"></div>
+      </div>
+
+      <div id="gerar-caixas" class="botoes">
+        <h6>clique para gerar 5 caixas coloridas</h6>
+        <div class="buttons">        
+          <button class="gerar" class="todos"  onclick="criarCaixas()">Gerar</button>
+          <button id="removeCaixas" class="remove" class="todos"  onclick="removeCaixas()"> Apagar</button>
+          <!----remover-->
+        </div> <br>
+        <div id="caixas" class="resposta"></div>
+      </div> 
+
+      <div id="gerar-imagem" class="botoes">
+        <h6>Clique para criar uma imagem</h6>
+        <div class="buttons">
+          <button class="gerar" class="todos"  onclick="criarImagens()">Gerar</button>
+          <button id="removeImagens" class="remove" class="todos"  onclick="removeImagens()">
+            Apagar
+          </button>
+          <!----remover-->
+        </div> <br>
+        <div id="imagens" class="resposta"></div>
+      </div>
+      <div id="gerar-paragarafos" class="botoes">
+        <h6>Clique para gerar 1 paragráfo</h6>
+        <div class="buttons">
+          <button class="gerar" class="todos"  onclick="gerarParagrafos()">Gerar</button>
+          <button id="removeParagrafo" class="remove" class="todos"  onclick="removeParagrafos()"
+          >
+            Apagar
+          </button>
+          <!----remover-->
+        </div> <br>
+        <div id="paragrafo" class="resposta"></div>
+      </div>
+      <div id="gerar-form" class="botoes">
+        <h6>Clique Para criar um form</h6>
+        <div class="buttons">       
+          <button class="gerar" class="todos"   onclick="criarForm()">Gerar</button>
+          <button id="removeForm" class="remove" class="todos"   onclick="removeForm()">
+            Apagar
+          </button>
+          <!----remover-->
+        </div> <br>
+        <div id="form" class="resposta"></div>
+      </div>
+    </main>
+
+    <script>
+      function criarBotao() {
+        for (i = 1; i <= 10; i++) {
+          const botao = document.createElement("button");
+          botao.innerHTML = i;
+          botao.id = "meuBotao";
+          document.getElementById("botao").appendChild(botao);
+        }
+      }
+
+      function criarLista() {
+        nomes = ["Felipe"];
+
+        for (i = 0; i < 2; i++) {
+          const li = document.createElement("li");
+          li.innerHTML = nomes;
+
+          const ul = document.createElement("ul");
+          ul.appendChild(li);
+
+          document.getElementById("lista").appendChild(ul);
+        }
+      }
+
+      function criarCaixas() {
+        const cores = ["red", "blue", "green", "yellow", "pink"];
+        for (i = 0; i < 5; i++) {
+          const div = document.createElement("div");
+          div.innerHTML = i + 1;
+          document.getElementById("caixas").appendChild(div);
+          div.style.backgroundColor = cores[i];
+          div.style.width = "5vw";
+          div.style.height = "7vh";
+          div.style.display = "flex";
+          div.style.flexDirection = "row";
+        }
+      }
+
+      function criarImagens(url) {
+        const img = document.createElement("img");
+        img.style.height = "50px";
+        img.style.width = "50px";
+        img.src =
+          "https://r2.padrepauloricardo.org/bol3rb0xl77wvae5myhsshzjsxh2";
+        document.getElementById("imagens").appendChild(img);
+      }
+
+      function gerarParagrafos(qtd) {
+        for (i = 0; i < 1; i++) {
+          const p = document.createElement("p");
+          document.getElementById("paragrafo").appendChild(p);
+          p.innerText = "paragrafo gerado com um click";
+        }
+      }
+
+      function criarForm() {
+        for (i = 0; i < 2; i++) {
+          const us = document.createElement("input");
+          if (i == 1) {
+            us.setAttribute("placeholder", "Senha");
+          } else {
+            us.setAttribute("placeholder", "Usuário");
+          }
+          document.getElementById("form").appendChild(us);
+        }
+
+        const botao = document.createElement("button");
+
+        botao.innerText = "entrar";
+        botao.style.width = "100px";
+        botao.style.height = "20px";
+        botao.style.marginTop = "1vh";
+        document.getElementById("form").appendChild(botao);
+      }
+
+      
+                  //--------removeção
+
+      function removeBotao() {
+        const remove = document.getElementById("botao");
+        botao.innerHTML = "";
+      }
+
+      function removeLista() {
+        const remove = document.getElementById("criarLista");
+        lista.innerHTML = "";
+      }
+
+      function removeCaixas() {
+        const remove = document.getElementById("criarCaixas");
+        caixas.innerHTML = "";
+      }
+
+      function removeImagens() {
+        const remove = document.getElementById("criarImagens");
+        imagens.innerHTML = "";
+      }
+
+      function removeLista() {
+        const remove = document.getElementById("criarLista");
+        lista.innerHTML = "";
+      }
+
+      function removeParagrafos() {
+        const remove = document.getElementById("gerarParagafos");
+        paragrafo.innerHTML = "";
+      }
+
+      function removeForm() {
+        const remove = document.getElementById("form");
+        form.innerHTML = "";
+      }
+    </script>
+  </body>
+</html>
